@@ -8,8 +8,7 @@ import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
-
-# comment out these three lines if already downloaded
+# comment out these two lines if already downloaded
 # nltk.download('punkt')
 # nltk.download('stopwords')
 
@@ -85,7 +84,7 @@ def output(counter, file_count, fail_count):
         for i in range(NUM_TO_SHOW):
             word_1 = counter[i]
             word_2 = counter[-(NUM_TO_SHOW-i)]
-            output_txt += "{0:4}{1:15}{2:>5}   | {3:15}{4:>5}\n".format(str(i + 1) + ".", word_1[0], word_1[1], word_2[0], word_2[1])
+            output_txt += "{0:4}{1:15}{2:>5}   | {3:15}{4:>5}\n".format(str(i + 1   ) + ".", word_1[0], word_1[1], word_2[0], word_2[1])
 
         output_file.write(output_txt)
 
