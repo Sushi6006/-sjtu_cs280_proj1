@@ -74,17 +74,23 @@ def filter_words(tokens):
     return [word for word in tokens if is_valid(word)]
 
 
-def output(counter, file_count, fail_count):
+def output(no_string_identified, no_string_filtered,  no_word, counter, file_count, fail_count):
     NUM_TO_SHOW = 200
     with open("output.txt", "w") as output_file:
-        title = "{0}\nFILES FOUND: {1};\nREAD SUCCESSFULLY: {2};   FAILED TO READ: {3};\n{0}\n\n".format('='*50, fail_count + file_count, file_count, fail_count)
-        list_title = "    {0:20}   | {1:20}\n".format("MOST COMMON", "LEAST COMMON")
-        output_txt = title + list_title
+        title = ("\n\n{0}\n"
+                 "FILES FOUND: {1};\n"
+                 "READ SUCCESSFULLY: {2};   FAILED TO READ: {3};\n"
+                 "{0}\n").format('='*50, fail_count + file_count, file_count, fail_count)
+        data_info = ("Number of strings identified:       {}\n"
+                     "Number of strings after filtration: {}\n"
+                     "Number of individual words:         {}\n\n\n").format(no_string_identified, no_string_filtered, no_word)
+        list_title = "      {0:20}   | {1:20}\n".format("MOST COMMON", "LEAST COMMON")
+        output_txt = title + data_info + list_title
 
         for i in range(NUM_TO_SHOW):
             word_1 = counter[i]
             word_2 = counter[-(NUM_TO_SHOW-i)]
-            output_txt += "{0:4}{1:15}{2:>5}   | {3:15}{4:>5}\n".format(str(i + 1   ) + ".", word_1[0], word_1[1], word_2[0], word_2[1])
+            output_txt += "{0:6}{1:15}{2:>5}   | {3:15}{4:>5}\n".format(str(i + 1   ) + ".", word_1[0], word_1[1], word_2[0], word_2[1])
 
         output_file.write(output_txt)
 
@@ -97,9 +103,11 @@ def main():
     # read files
     content, file_count, fail_count = read_file(os.getcwd())
     tokens = [word.lower() for word in word_tokenize(content)]  # tokenize
+    no_string_identified = len(tokens)
 
     # filter tokens (stopwords, numbers etc.)
     tokens = filter_words(tokens)
+    no_string_filtered = len(tokens)
 
     # stemming
     ps = PorterStemmer()
@@ -107,8 +115,9 @@ def main():
 
     c = dict(Counter(tokens))
     sorted_counter = sorted(c.items(), key=lambda a: (-a[1], a[0]))
+    no_word = len(c.keys())
 
-    output(sorted_counter, file_count, fail_count)
+    output(no_string_identified, no_string_filtered, no_word, sorted_counter, file_count, fail_count)
 
 
 if __name__ == "__main__":
