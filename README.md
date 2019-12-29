@@ -10,5 +10,11 @@
 - [Natural Language Toolkit (nltk)](https://www.nltk.org/)
 
 #### Code Explained
-- Read files
+- [Reading Files](#reading-files)
 - Convert to processable types (tokenisation)
+- Filter (remove numbers, punctuations and stop words)
+- Stemming
+- Count frequency
+- Output
+
+##### Reading Files
