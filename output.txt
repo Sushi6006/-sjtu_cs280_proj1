@@ -1,0 +1,206 @@
+==================================================
+FILES FOUND: 685;
+READ SUCCESSFULLY: 672;   FAILED TO READ: 13;
+==================================================
+
+    MOST COMMON            | LEAST COMMON        
+0.  comput          1663   | voyeur             1
+1.  gmt             1233   | vpla               1
+2.  page            1115   | vrc                1
+3.  scienc          1002   | vsm                1
+4.  system           992   | vsr                1
+5.  univers          869   | vthe               1
+6.  server           764   | waart              1
+7.  program          729   | wag                1
+8.  home             728   | waggen             1
+9.  date             695   | wagnal             1
+10. research         616   | wahl               1
+11. inform           530   | wai                1
+12. cours            493   | wakeman            1
+13. depart           491   | waldhofstrass      1
+14. use              487   | walkthru           1
+15. work             471   | wallac             1
+16. interest         454   | walsh              1
+17. project          452   | waltz              1
+18. austin           446   | warburton          1
+19. engin            423   | ward               1
+20. monday           361   | warm               1
+21. student          359   | warmli             1
+22. offic            358   | warp               1
+23. web              345   | warrant            1
+24. class            341   | washburn           1
+25. lectur           337   | washinton          1
+26. cs               334   | wasserman          1
+27. languag          334   | watercolor         1
+28. wednesday        310   | waterloo           1
+29. assign           303   | watt               1
+30. softwar          299   | wawrzynek          1
+31. parallel         297   | wealth             1
+32. cornel           286   | weari              1
+33. last             278   | webar              1
+34. cse              275   | webmast            1
+35. current          272   | webpaint           1
+36. nov              269   | webserv            1
+37. paper            269   | wedgwood           1
+38. also             266   | weekend            1
+39. texa             266   | weem               1
+40. homework         262   | weichen            1
+41. algorithm        255   | weideman           1
+42. oper             251   | weidong            1
+43. thu              248   | weigh              1
+44. link             245   | weird              1
+45. distribut        244   | weis               1
+46. time             240   | weizmann           1
+47. washington       239   | wel                1
+48. design           238   | welt               1
+49. network          236   | wendel             1
+50. may              216   | wer                1
+51. note             213   | wermter            1
+52. problem          208   | wesley             1
+53. read             204   | wesleyan           1
+54. avail            195   | western            1
+55. group            195   | westi              1
+56. postscript       194   | westlak            1
+57. tuesday          191   | wet                1
+58. solut            189   | weymouth           1
+59. list             188   | wf                 1
+60. new              188   | wfinger            1
+61. graduat          184   | wg                 1
+62. address          181   | whale              1
+63. hour             181   | whatnot            1
+64. email            179   | wheather           1
+65. one              177   | wheaton            1
+66. fall             174   | wheel              1
+67. implement        174   | wheeler            1
+68. compil           173   | whenver            1
+69. public           173   | whim               1
+70. develop          171   | whirlwind          1
+71. acm              169   | whiski             1
+72. seattl           167   | whiti              1
+73. gener            166   | whiz               1
+74. updat            165   | whkao              1
+75. data             164   | wickersham         1
+76. proceed          164   | widespread         1
+77. professor        163   | widyono            1
+78. includ           160   | wiehl              1
+79. learn            160   | wigderson          1
+80. hall             159   | wil                1
+81. process          158   | wilder             1
+82. schedul          158   | wiley              1
+83. document         157   | wilk               1
+84. file             157   | wilshir            1
+85. multimedia       154   | windsurf           1
+86. machin           153   | winer              1
+87. final            151   | wing               1
+88. databas          150   | winner             1
+89. phone            150   | winopen            1
+90. thursday         149   | wipe               1
+91. applic           148   | wireless           1
+92. model            145   | wkmak              1
+93. architectur      144   | wnsearchdir        1
+94. confer           141   | woc                1
+95. code             140   | wolff              1
+96. contact          140   | wolfgang           1
+97. topic            139   | wolv               1
+98. year             139   | wont               1
+99. due              136   | wooden             1
+100.like             136   | woodfil            1
+101.mathemat         135   | woodlawn           1
+102.get              134   | woodward           1
+103.exam             132   | woodwork           1
+104.see              132   | wooten             1
+105.mail             131   | wordnet            1
+106.welcom           131   | wordperfect        1
+107.graphic          129   | workin             1
+108.spring           127   | workspac           1
+109.support          126   | worldcup           1
+110.tx               126   | worm               1
+111.recent           125   | wors               1
+112.text             125   | wortman            1
+113.intern           123   | wouldnt            1
+114.analysi          122   | wow                1
+115.version          122   | wr                 1
+116.area             121   | wrapper            1
+117.theori           120   | wray               1
+118.perform          119   | wright             1
+119.ta               119   | wrist              1
+120.fax              116   | writen             1
+121.april            113   | wufo               1
+122.lab              113   | wwang              1
+123.usa              113   | wwh                1
+124.sieg             111   | wwlee              1
+125.click            110   | wwweb              1
+126.construct        110   | wwwf               1
+127.friday           110   | wxyc               1
+128.intellig         109   | wy                 1
+129.upson            109   | wyatt              1
+130.set              108   | wyl                1
+131.commun           107   | wylli              1
+132.novemb           107   | wysiwyg            1
+133.imag             106   | xa                 1
+134.java             106   | xakcl              1
+135.pleas            106   | xfv                1
+136.report           106   | xgcl               1
+137.octob            105   | xhost              1
+138.studi            105   | xiaohai            1
+139.homepag          104   | xie                1
+140.provid           104   | xin                1
+141.grade            103   | xjob               1
+142.technolog        102   | xmorphia           1
+143.first            101   | xmosaic            1
+144.internet         101   | xqin               1
+145.logic            101   | xsro               1
+146.modifi           101   | xuelu              1
+147.ieee             100   | xunet              1
+148.materi           100   | ya                 1
+149.wa               100   | yasuhiko           1
+150.introduct         98   | ychung             1
+151.symposium         97   | yeap               1
+152.book              96   | yearn              1
+153.person            96   | yeehah             1
+154.ithaca            95   | yelena             1
+155.master            95   | yen                1
+156.teach             95   | yer                1
+157.www               95   | yerewan            1
+158.associ            94   | yesha              1
+159.instructor        94   | yesterday          1
+160.look              94   | yin                1
+161.send              94   | yingjun            1
+162.site              94   | yma                1
+163.techniqu          94   | yminski            1
+164.librari           93   | yo                 1
+165.number            93   | yohan              1
+166.stuff             93   | yonglu             1
+167.environ           92   | yonsei             1
+168.present           92   | yooschung          1
+169.school            92   | yoosun             1
+170.two               92   | younger            1
+171.make              91   | youngest           1
+172.method            91   | youngquist         1
+173.object            91   | your               1
+174.place             91   | youth              1
+175.structur          91   | youv               1
+176.go                90   | yuan               1
+177.robot             90   | yue                1
+178.video             90   | yuhara             1
+179.handout           89   | yun                1
+180.html              89   | yuval              1
+181.tool              89   | yuwu               1
+182.check             88   | zadeck             1
+183.requir            88   | zani               1
+184.resum             88   | zchen              1
+185.find              87   | zealand            1
+186.manag             87   | zee                1
+187.activ             86   | zeit               1
+188.journal           86   | zeitnet            1
+189.optim             86   | zelazni            1
+190.search            86   | zhao               1
+191.onlin             85   | zhuqe              1
+192.pictur            85   | zillion            1
+193.ut                85   | zima               1
+194.world             85   | zipe               1
+195.high              84   | zmason             1
+196.member            84   | zodiac             1
+197.pp                84   | zsh                1
+198.question          84   | zwhere             1
+199.seed              84   | ©jason             1
