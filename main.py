@@ -74,7 +74,7 @@ def filter_words(tokens):
     return [word for word in tokens if is_valid(word)]
 
 
-def output(no_string_identified, no_string_filtered,  no_word, counter, file_count, fail_count):
+def output(no_string_identified, no_string_filtered, no_word, counter, file_count, fail_count):
     NUM_TO_SHOW = 200
     with open("output.txt", "w") as output_file:
         title = ("\n\n{0}\n"
@@ -90,10 +90,9 @@ def output(no_string_identified, no_string_filtered,  no_word, counter, file_cou
         for i in range(NUM_TO_SHOW):
             word_1 = counter[i]
             word_2 = counter[-(NUM_TO_SHOW-i)]
-            output_txt += "{0:6}{1:15}{2:>5}   | {3:15}{4:>5}\n".format(str(i + 1   ) + ".", word_1[0], word_1[1], word_2[0], word_2[1])
+            output_txt += "{0:6}{1:15}{2:>5}   | {3:15}{4:>5}\n".format(str(i + 1) + ".", word_1[0], word_1[1], word_2[0], word_2[1])
 
         output_file.write(output_txt)
-
 
 
 #====================================#

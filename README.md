@@ -14,8 +14,8 @@
 - [Convert to processable types (tokenisation)](#tokenisation)
 - [Filter (remove numbers, punctuations and stop words)](#filtering-words)
 - [Stemming](#stemming)
-- Count frequency
-- Output
+- [Counting Frequency](#counting-frequency)
+- [Output](#output)
 
 #### Reading Files
 Steps:
@@ -29,6 +29,14 @@ Steps:
 Convert string into list of words. That's it.
 
 #### Filtering Words
-The filtering rules have been changed many times in order to increase the quality of our result. At first, all the words with punctuations (`string.punctuation`) are removed. However, there are strings with "-", "'", "\_" or "." that might still be helpful. Then the rule was justified so that these characters have been excluded from all other punctuation. All the strings with alphabetical characters that contains those special characters would be kept. It has then be found out that there are a lot of strings like "'ve", "a.", "s." left in the list. All the strings like those have been added to the filter. Lastly, after completing the next step, we realised that all the "least common" words are actually random numbers such as 1.0, 29 and dates like 1985-Dec-05. Therefore, all the words that contain punctuations or numbers are completely removed.
+The filtering rules have been changed many times in order to increase the quality of our result. At first, all the words with punctuations (`string.punctuation`) are removed. However, there are strings with "-", "'", "\_" or "." that might still be helpful. Then the rule was justified so that these characters have been excluded from all other punctuation. All the strings with alphabetical characters that contains those special characters would be kept. It has then be found out that there are a lot of strings like `'ve`, `a.`, `s.` left in the list. All the strings like those have been added to the filter. Lastly, after completing the next step, we realised that all the "least common" words are actually random numbers such as `1.0`, `29` and dates like `1985-Dec-05`. Therefore, all the words that contain punctuations or numbers are completely removed.
 
 #### Stemming
+There are many of stemmers, Porter Stemmer, Lancaster Stemmer and Snowball Stemmer are three most commonly used stemmers. Porter stemmer is the one we decided to use. The reason is Lancaster is "Very aggressive stemming algorithm, sometimes to a fault."[(1)](https://stackoverflow.com/questions/10554052/what-are-the-major-differences-and-benefits-of-porter-and-lancaster-stemming-alg) ~~and I don't know what Snowball is.~~
+
+#### Counting Frequency
+- [collections.Counter()](https://docs.python.org/3/library/collections.html?highlight=counter#collections.Counter)
+- then, [sorted()](https://docs.python.org/3/library/functions.html?highlight=sorted#sorted)
+
+#### Output
+Yes.
