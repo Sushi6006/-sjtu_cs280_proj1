@@ -95,6 +95,17 @@ def output(no_string_identified, no_string_filtered, no_word, counter, file_coun
         output_file.write(output_txt)
 
 
+def test_output(info, msg):
+    # {"str_identified", "str_filtered", "word_count", "sorted_freqs", "file_count", "fail_count"}
+    print(f'{"="*10}{msg.upper():10}{"="*10}')
+    print("str_identified:", info["str_identified"])
+    print("str_filtered:  ", info["str_filtered"])
+    print("word_count:    ", info["word_count"])
+    print("file_count:    ", info["file_count"])
+    print("fail_count:    ", info["fail_count"])
+    print(f'{"="*30}')
+
+
 #====================================#
 #========== STARTS HERE!!! ==========#
 #====================================#
@@ -119,16 +130,25 @@ def calc_main(file_dir):
     sorted_freqs = sorted(c.items(), key=lambda a: (-a[1], a[0]))
     no_word = len(c.keys())
 
-    # output(no_string_identified, no_string_filtered, no_word, sorted_freqs, file_count, fail_count)
-    return (no_string_identified, no_string_filtered, no_word, sorted_freqs, file_count, fail_count)
+    output(no_string_identified, no_string_filtered, no_word, sorted_freqs, file_count, fail_count)
+
+    result = {"str_identified": no_string_identified,
+              "str_filtered": no_string_filtered,
+              "word_count": no_word,
+              "sorted_freqs": sorted_freqs,
+              "file_count": file_count,
+              "fail_count": fail_count}
+    return result
 
 
 def main():
+
+    # get results from files
     train_result = calc_main("projectdataset/train")
     test_result = calc_main("projectdataset/test")
-    print(f'\n{"="*50}\n{train_result[0:3]}{train_result[4:]}\n{"="*50}\n')
-    print(f'\n{"="*50}\n{test_result[0:3]}{test_result[4:]}\n{"="*50}\n')
-    
+
+    test_output(train_result, "train set")
+    test_output(test_result, "test set")
 
 
 if __name__ == "__main__":
