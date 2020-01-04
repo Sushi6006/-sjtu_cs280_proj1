@@ -98,9 +98,12 @@ def output(no_string_identified, no_string_filtered, no_word, counter, file_coun
 #====================================#
 #========== STARTS HERE!!! ==========#
 #====================================#
-def main():
+def calc_main(file_dir):
+
+    # file_dir = os.getcwd()
+
     # read files
-    content, file_count, fail_count = read_file(os.getcwd())
+    content, file_count, fail_count = read_file(file_dir)
     tokens = [word.lower() for word in word_tokenize(content)]  # tokenize
     no_string_identified = len(tokens)
 
@@ -113,10 +116,19 @@ def main():
     tokens = [ps.stem(word) for word in tokens]
 
     c = dict(Counter(tokens))
-    sorted_counter = sorted(c.items(), key=lambda a: (-a[1], a[0]))
+    sorted_freqs = sorted(c.items(), key=lambda a: (-a[1], a[0]))
     no_word = len(c.keys())
 
-    output(no_string_identified, no_string_filtered, no_word, sorted_counter, file_count, fail_count)
+    # output(no_string_identified, no_string_filtered, no_word, sorted_freqs, file_count, fail_count)
+    return (no_string_identified, no_string_filtered, no_word, sorted_freqs, file_count, fail_count)
+
+
+def main():
+    train_result = calc_main("projectdataset/train")
+    test_result = calc_main("projectdataset/test")
+    print(f'\n{"="*50}\n{train_result[0:3]}{train_result[4:]}\n{"="*50}\n')
+    print(f'\n{"="*50}\n{test_result[0:3]}{test_result[4:]}\n{"="*50}\n')
+    
 
 
 if __name__ == "__main__":
