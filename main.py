@@ -15,6 +15,9 @@ from nltk.stem import PorterStemmer
 # for calculation
 from collections import Counter
 
+# numbers of words to be calculated
+NUM_TO_CALC = 200
+
 # read all the files to a string
 def read_file(path):
     # get all the files (with full path)
@@ -28,19 +31,21 @@ def read_file(path):
                 files.append(os.path.join(root, file))
 
     # loop through the files
+    files_read = []
     file_count = 0
     fail_count = 0
     content = ""  # stores all the text combined
     for f in files:
         with open(f, "r") as f:
-            file_count += 1
             try:
                 content += BeautifulSoup(f.read(), "lxml").text
+                file_count += 1
+                files_read.append(f.name)
             except UnicodeDecodeError:
                 # print("UnicodeDecodeError: {}".format(f))
                 fail_count += 1
 
-    return (content, file_count, fail_count)
+    return (content, files_read, file_count, fail_count)
 
 
 # filter out all the words considered not valuable
@@ -75,7 +80,7 @@ def filter_words(tokens):
 
 
 def output(no_string_identified, no_string_filtered, no_word, counter, file_count, fail_count):
-    NUM_TO_SHOW = 200
+    NUM_TO_SHOW = NUM_TO_CALC
     with open("output.txt", "w") as output_file:
         title = ("\n\n{0}\n"
                  "FILES FOUND: {1};\n"
@@ -87,7 +92,7 @@ def output(no_string_identified, no_string_filtered, no_word, counter, file_coun
         list_title = "      {0:20}   | {1:20}\n".format("MOST COMMON", "LEAST COMMON")
         output_txt = title + data_info + list_title
 
-        for i in range(NUM_TO_SHOW):
+        for i in range(min(NUM_TO_SHOW, len(counter))):
             word_1 = counter[i]
             word_2 = counter[-(NUM_TO_SHOW-i)]
             output_txt += "{0:6}{1:15}{2:>5}   | {3:15}{4:>5}\n".format(str(i + 1) + ".", word_1[0], word_1[1], word_2[0], word_2[1])
@@ -97,7 +102,7 @@ def output(no_string_identified, no_string_filtered, no_word, counter, file_coun
 
 def test_output(info, msg):
     # {"str_identified", "str_filtered", "word_count", "sorted_freqs", "file_count", "fail_count"}
-    print(f'{"="*10}{msg.upper():10}{"="*10}')
+    print(f'{"="*10}{msg.upper():^12}{"="*10}')
     print("str_identified:", info["str_identified"])
     print("str_filtered:  ", info["str_filtered"])
     print("word_count:    ", info["word_count"])
@@ -106,15 +111,21 @@ def test_output(info, msg):
     print(f'{"="*30}')
 
 
-#====================================#
-#========== STARTS HERE!!! ==========#
-#====================================#
-def calc_main(file_dir):
+# project 1 main, calculate frequency related stuff
+def calc_main(file_dir, is_file=False):
 
     # file_dir = os.getcwd()
 
     # read files
-    content, file_count, fail_count = read_file(file_dir)
+    if not is_file:
+        content, files_read, file_count, fail_count = read_file(file_dir)
+    else:
+        with open(file_dir, "r") as f:
+            content = BeautifulSoup(f.read(), "lxml").text
+        files_read = [file_dir]
+        file_count = 1
+        fail_count = 0
+
     tokens = [word.lower() for word in word_tokenize(content)]  # tokenize
     no_string_identified = len(tokens)
 
@@ -137,10 +148,23 @@ def calc_main(file_dir):
               "word_count": no_word,
               "sorted_freqs": sorted_freqs,
               "file_count": file_count,
-              "fail_count": fail_count}
+              "fail_count": fail_count,
+              "files_read": files_read}
+
     return result
 
 
+def calc_tf(word, freqs):
+
+    for w, f in freqs:
+        if w == word:
+            return f / freqs[0][1]
+    return 0
+
+
+#====================================#
+#========== STARTS HERE!!! ==========#
+#====================================#
 def main():
 
     # get results from files
@@ -149,6 +173,20 @@ def main():
 
     test_output(train_result, "train set")
     test_output(test_result, "test set")
+
+    tf_train = [[0 for j in range(NUM_TO_CALC)] for i in range(train_result["file_count"])]
+
+    train_fileset = train_result["files_read"]
+    test_fileset = test_result["files_read"]
+    for i in range(NUM_TO_CALC):
+        curr_word = train_result["sorted_freqs"][i][0]
+        curr_freq = train_result["sorted_freqs"][i][1]
+
+        for j in range(train_result["file_count"]):
+            result = calc_main(train_fileset[i], is_file=True)
+            tf_train[j][i] = calc_tf(curr_word, result["sorted_freqs"])
+
+    print(tf_train)
 
 
 if __name__ == "__main__":
