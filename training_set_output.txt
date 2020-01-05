@@ -1,0 +1,22 @@
+
+==================================================
+===============    TRAINING SET    ===============
+FILES FOUND: 466;
+READ SUCCESSFULLY: 457;   FAILED TO READ: 9;
+==================================================
+Number of strings identified:       128708
+Number of strings after filtration: 59354
+Number of individual words:         6817
+
+
+      MOST COMMON            | LEAST COMMON        
+1.    comput          1073   | zima               1
+2.    gmt              830   | zip                1
+3.    page             768   | zipe               1
+4.    scienc           691   | zmason             1
+5.    system           641   | zodiac             1
+6.    univers          626   | zone               1
+7.    server           520   | zsh                1
+8.    home             512   | zurich             1
+9.    date             474   | zwhere             1
+10.   austin           442   | ©jason             1
