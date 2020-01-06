@@ -18,7 +18,7 @@ from nltk.stem import PorterStemmer
 from collections import Counter
 
 # numbers of words to be calculated
-NUM_TO_CALC = 10
+NUM_TO_CALC = 200
 
 # read all the files to a string
 def read_file(path):
