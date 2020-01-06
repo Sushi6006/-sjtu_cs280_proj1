@@ -142,7 +142,7 @@ def idf_output(idf_train, idf_test):
     output_file = open("idf.txt", "w")
 
     output = ("\n\n{0}\n{1:^50}\n{0}\n\n"
-              "{2:>8}{3:>8}{4:>8}").format('='*50, "Inverse Document Frequency", "", "train", "test")
+              "{2:>8}{3:>8}{4:>8}\n").format('='*50, "Inverse Document Frequency", "", "train", "test")
 
     for i in range(NUM_TO_CALC):
         output += ("{0:>8}{1:>8}{2:>8}\n").format("word_" + str(i + 1), idf_train[i], idf_test[i])
@@ -238,17 +238,17 @@ def main():
     tf_test = [[0 for j in range(NUM_TO_CALC)] for i in range(test_result["file_count"])]
     train_fileset = train_result["files_read"]
     test_fileset = test_result["files_read"]
-    # for i in range(NUM_TO_CALC):
-    #     curr_time = datetime.now().replace(microsecond=0)
-    #     print("===== WORD no.{0:0>4d} ===== TIME USED: {1:<8} =====".format(i, str(curr_time - begin_time)))
-    #     train_word = train_result["sorted_freqs"][i][0]
-    #     test_word = train_result["sorted_freqs"][i][0]
-    #     for j in range(train_result["file_count"]):
-    #         result = calc_main(train_fileset[j], is_file=True)
-    #         tf_train[j][i] = calc_tf(train_word, result["sorted_freqs"])
-    #     for j in range(test_result["file_count"]):
-    #         result = calc_main(test_fileset[j], is_file=True)
-    #         tf_test[j][i] = calc_tf(test_word, result["sorted_freqs"])
+    for i in range(NUM_TO_CALC):
+        curr_time = datetime.now().replace(microsecond=0)
+        print("===== WORD no.{0:0>4d} ===== TIME USED: {1:<8} =====".format(i, str(curr_time - begin_time)))
+        train_word = train_result["sorted_freqs"][i][0]
+        test_word = train_result["sorted_freqs"][i][0]
+        for j in range(train_result["file_count"]):
+            result = calc_main(train_fileset[j], is_file=True)
+            tf_train[j][i] = calc_tf(train_word, result["sorted_freqs"])
+        for j in range(test_result["file_count"]):
+            result = calc_main(test_fileset[j], is_file=True)
+            tf_test[j][i] = calc_tf(test_word, result["sorted_freqs"])
 
     # read the following print statement !!!
     print("===== Calculating IDF...")
