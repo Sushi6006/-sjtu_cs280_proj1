@@ -145,7 +145,7 @@ def idf_output(idf_train, idf_test):
               "{2:>8}{3:>8}{4:>8}\n").format('='*50, "Inverse Document Frequency", "", "train", "test")
 
     for i in range(NUM_TO_CALC):
-        output += ("{0:>8}{1:>8}{2:>8}\n").format("word_" + str(i + 1), idf_train[i], idf_test[i])
+        output += ("{0:>8}{1:>8}{2:>8}\n").format("word_" + str(i + 1), f'{idf_train[i]:.2f}', f'{idf_test[i]:.2f}')
 
     output_file.write(output)
     output_file.close()
