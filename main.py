@@ -1,6 +1,7 @@
 import os
 import re
 import string
+from math import log
 from datetime import datetime
 from bs4 import BeautifulSoup
 
@@ -17,7 +18,7 @@ from nltk.stem import PorterStemmer
 from collections import Counter
 
 # numbers of words to be calculated
-NUM_TO_CALC = 200
+NUM_TO_CALC = 10
 
 # read all the files to a string
 def read_file(path):
@@ -133,6 +134,21 @@ def tf_output(tf_train, tf_test):
     train_output_file.write(train_output)
     test_output_file.write(test_output)
 
+    train_output_file.close()
+    test_output_file.close()
+
+
+def idf_output(idf_train, idf_test):
+    output_file = open("idf.txt", "w")
+
+    output = ("\n\n{0}\n{1:^50}\n{0}\n\n"
+              "{2:>8}{3:>8}{4:>8}").format('='*50, "Inverse Document Frequency", "", "train", "test")
+
+    for i in range(NUM_TO_CALC):
+        output += ("{0:>8}{1:>8}{2:>8}\n").format("word_" + str(i + 1), idf_train[i], idf_test[i])
+
+    output_file.write(output)
+    output_file.close()
 
 
 def test_output(info, msg):
@@ -222,20 +238,42 @@ def main():
     tf_test = [[0 for j in range(NUM_TO_CALC)] for i in range(test_result["file_count"])]
     train_fileset = train_result["files_read"]
     test_fileset = test_result["files_read"]
+    # for i in range(NUM_TO_CALC):
+    #     curr_time = datetime.now().replace(microsecond=0)
+    #     print("===== WORD no.{0:0>4d} ===== TIME USED: {1:<8} =====".format(i, str(curr_time - begin_time)))
+    #     train_word = train_result["sorted_freqs"][i][0]
+    #     test_word = train_result["sorted_freqs"][i][0]
+    #     for j in range(train_result["file_count"]):
+    #         result = calc_main(train_fileset[j], is_file=True)
+    #         tf_train[j][i] = calc_tf(train_word, result["sorted_freqs"])
+    #     for j in range(test_result["file_count"]):
+    #         result = calc_main(test_fileset[j], is_file=True)
+    #         tf_test[j][i] = calc_tf(test_word, result["sorted_freqs"])
+
+    # read the following print statement !!!
+    print("===== Calculating IDF...")
+    idf_train = [0 for i in range(NUM_TO_CALC)]
+    idf_test = [0 for i in range(NUM_TO_CALC)]
     for i in range(NUM_TO_CALC):
         curr_time = datetime.now().replace(microsecond=0)
         print("===== WORD no.{0:0>4d} ===== TIME USED: {1:<8} =====".format(i, str(curr_time - begin_time)))
         train_word = train_result["sorted_freqs"][i][0]
-        test_word = train_result["sorted_freqs"][i][0]
+        test_word = test_result["sorted_freqs"][i][0]
+        train_count = 0
+        test_count = 0
         for j in range(train_result["file_count"]):
-            result = calc_main(train_fileset[i], is_file=True)
-            tf_train[j][i] = calc_tf(train_word, result["sorted_freqs"])
+            with open(train_fileset[j], "r") as f:
+                if train_word in f.read():
+                    train_count += 1
         for j in range(test_result["file_count"]):
-            result = calc_main(test_fileset[i], is_file=True)
-            tf_test[j][i] = calc_tf(test_word, result["sorted_freqs"])
-
+            with open(test_fileset[j], "r") as f:
+                if test_word in f.read():
+                    test_count += 1
+        tf_train[i] = 0 if (train_count == 0) else log(train_result["file_count"] / train_count, 2)
+        tf_test[i] = 0 if (test_count == 0) else log(test_result["file_count"] / test_count, 2)
 
     tf_output(tf_train, tf_test)
+    idf_output(idf_train, idf_test)
 
 
 if __name__ == "__main__":
