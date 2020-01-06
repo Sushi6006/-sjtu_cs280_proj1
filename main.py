@@ -18,7 +18,7 @@ from nltk.stem import PorterStemmer
 from collections import Counter
 
 # numbers of words to be calculated
-NUM_TO_CALC = 200
+NUM_TO_CALC = 10
 
 # read all the files to a string
 def read_file(path):
@@ -269,8 +269,8 @@ def main():
             with open(test_fileset[j], "r") as f:
                 if test_word in f.read():
                     test_count += 1
-        tf_train[i] = 0 if (train_count == 0) else log(train_result["file_count"] / train_count, 2)
-        tf_test[i] = 0 if (test_count == 0) else log(test_result["file_count"] / test_count, 2)
+        idf_train[i] = 0 if (train_count == 0) else log(train_result["file_count"] / train_count, 2)
+        idf_test[i] = 0 if (test_count == 0) else log(test_result["file_count"] / test_count, 2)
 
     tf_output(tf_train, tf_test)
     idf_output(idf_train, idf_test)
