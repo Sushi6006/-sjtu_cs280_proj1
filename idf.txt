@@ -4,14 +4,14 @@
             Inverse Document Frequency            
 ==================================================
 
-           train    test
-  word_1    1.82    1.78
-  word_2    0.00    0.00
-  word_3    0.89    1.73
-  word_4    2.93    0.86
-  word_5    1.94    3.34
-  word_6    5.25    1.75
-  word_7    3.79    0.10
-  word_8    0.69    3.41
-  word_9    2.04    5.66
- word_10    4.38    3.07
+                     train              test
+  word_1    comput    1.82    comput    1.78
+  word_2       gmt    0.00       gmt    0.00
+  word_3      page    0.89    system    1.73
+  word_4    scienc    2.93      page    0.86
+  word_5    system    1.94    scienc    3.34
+  word_6   univers    5.25   program    1.75
+  word_7    server    3.79    cornel    0.10
+  word_8      home    0.69    server    3.41
+  word_9      date    2.04   univers    5.66
+ word_10    austin    4.38    lectur    3.07

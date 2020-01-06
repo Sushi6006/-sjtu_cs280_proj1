@@ -138,14 +138,14 @@ def tf_output(tf_train, tf_test):
     test_output_file.close()
 
 
-def idf_output(idf_train, idf_test):
+def idf_output(idf_train, word_train, idf_test, word_test):
     output_file = open("idf.txt", "w")
 
     output = ("\n\n{0}\n{1:^50}\n{0}\n\n"
-              "{2:>8}{3:>8}{4:>8}\n").format('='*50, "Inverse Document Frequency", "", "train", "test")
+              "{2:>8}{2:>10}{3:>8}{2:>10}{4:>8}\n").format('='*50, "Inverse Document Frequency", "", "train", "test")
 
     for i in range(NUM_TO_CALC):
-        output += ("{0:>8}{1:>8}{2:>8}\n").format("word_" + str(i + 1), f'{idf_train[i]:.2f}', f'{idf_test[i]:.2f}')
+        output += ("{0:>8}{3:>10}{1:>8}{4:>10}{2:>8}\n").format("word_" + str(i + 1), f'{idf_train[i]:.2f}', f'{idf_test[i]:.2f}', word_train[i][0], word_test[i][0])
 
     output_file.write(output)
     output_file.close()
@@ -273,7 +273,7 @@ def main():
         idf_test[i] = 0 if (test_count == 0) else log(test_result["file_count"] / test_count, 2)
 
     tf_output(tf_train, tf_test)
-    idf_output(idf_train, idf_test)
+    idf_output(idf_train, train_result["sorted_freqs"], idf_test, test_result["sorted_freqs"])
 
 
 if __name__ == "__main__":
